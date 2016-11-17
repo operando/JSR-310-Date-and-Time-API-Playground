@@ -1,20 +1,35 @@
 import java.time.*;
-import java.time.chrono.IsoChronology;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.ResolverStyle;
+import java.time.format.SignStyle;
 import java.util.Calendar;
 import java.util.Date;
 
+import static java.time.temporal.ChronoField.HOUR_OF_DAY;
+import static java.time.temporal.ChronoField.YEAR;
+
 public class Main {
 
-    public static final DateTimeFormatter ISO_DATE_TIME;
+    public static final DateTimeFormatter SAMPLE_DATE_TIME;
+
+    public static final DateTimeFormatter OPTIONAL_START_SAMPLE_FORMAT;
+
     static {
-        ISO_DATE_TIME = new DateTimeFormatterBuilder()
+        OPTIONAL_START_SAMPLE_FORMAT = new DateTimeFormatterBuilder()
+                .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+                .appendLiteral("年")
+                .optionalStart() // オプションのセクションの開始(あれば出るって感じ)
+                .appendLiteral(' ')
+                .appendValue(HOUR_OF_DAY, 2)
+                .appendLiteral("時")
+                .toFormatter();
+
+
+        SAMPLE_DATE_TIME = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-                .optionalStart()
-                .appendOffsetId()
-                .optionalStart()
+//                .optionalStart() // オプションのセクションの開始(あれば出るって感じ)
+//                .appendOffsetId() // appendOffset("+HH:MM:ss", "Z")と同等
+                .appendOffset("+HH:MM", "Z") // 内部でOffsetIdPrinterParserが処理をしてる
                 .toFormatter();
     }
 
@@ -37,10 +52,16 @@ public class Main {
         System.out.println(DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault()).format(LocalDate.now().atStartOfDay(ZoneId.systemDefault())));
         DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault());
         System.out.println(formatter.format(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        DateTimeFormatter f = ISO_DATE_TIME;
-        ZonedDateTime zdt = ZonedDateTime.parse("2014-09-02T08:05:23.653Z", f);
-        System.out.println(zdt.toString());
-        System.out.println(ZonedDateTime.now().format(f));
+
+        System.out.println(ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+
+        System.out.println(ZonedDateTime.now().format(SAMPLE_DATE_TIME));
+//        System.out.println(LocalDateTime.now().format(SAMPLE_DATE_TIME)); // error
+        System.out.println(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).format(SAMPLE_DATE_TIME));
+
+        System.out.println(LocalDate.now().format(OPTIONAL_START_SAMPLE_FORMAT));
+        System.out.println(LocalDateTime.now().format(OPTIONAL_START_SAMPLE_FORMAT));
+
 //        System.out.println(DateTimeFormatter.ISO_INSTANT.format(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 //        System.out.println(DateTimeFormatter.ISO_INSTANT.parse("2006-01-02T15:04:05Z07:00"));
     }
