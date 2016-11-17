@@ -62,5 +62,24 @@ public class Main {
 
         System.out.println(LocalDate.now().format(OPTIONAL_START_SAMPLE_FORMAT));
         System.out.println(LocalDateTime.now().format(OPTIONAL_START_SAMPLE_FORMAT));
+
+
+        System.out.println(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        System.out.println(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli());
+
+        System.out.println(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        System.out.println(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC));
+
+        System.out.println(LocalDateTime.now());
+        System.out.println(LocalDateTime.now().atOffset(ZoneOffset.of("+05:00")).toInstant());
+        System.out.println(LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant());
+        System.out.println(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println("LocalDateTime.now().toInstant(ZoneOffset.UTC) : " + LocalDateTime.now().toInstant(ZoneOffset.UTC));
+        System.out.println(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC));
+        System.out.println(LocalDate.now().atTime(LocalTime.now()).atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println(Instant.from(ZonedDateTime.now()));
+        System.out.println(ZonedDateTime.now().toInstant());
+        System.out.println(Instant.from(ZonedDateTime.now()));
+        System.out.println(Instant.now());
     }
 }

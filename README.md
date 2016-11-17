@@ -19,3 +19,8 @@ https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterB
 #### appendPattern
 
 https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterBuilder.html#appendPattern-java.lang.String-
+
+
+### Instant
+
+https://docs.oracle.com/javase/jp/8/docs/api/java/time/Instant.html
