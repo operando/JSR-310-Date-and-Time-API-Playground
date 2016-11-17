@@ -47,7 +47,6 @@ public class Main {
         System.out.println(new Date(LocalDate.of(1896, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()));
         System.out.println(c.getTimeInMillis());
         System.out.println(LocalDate.of(1896, 1, 1));
-//        System.out.println(LocalDateTime.now());
         System.out.println(LocalDate.now().atStartOfDay(ZoneId.systemDefault()));
         System.out.println(DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault()).format(LocalDate.now().atStartOfDay(ZoneId.systemDefault())));
         DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault());
@@ -58,11 +57,10 @@ public class Main {
         System.out.println(ZonedDateTime.now().format(SAMPLE_DATE_TIME));
 //        System.out.println(LocalDateTime.now().format(SAMPLE_DATE_TIME)); // error
         System.out.println(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).format(SAMPLE_DATE_TIME));
+        System.out.println(LocalDateTime.now().atOffset(ZoneOffset.UTC).format(SAMPLE_DATE_TIME));
+        System.out.println(LocalDate.now().atTime(OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC)).format(SAMPLE_DATE_TIME));
 
         System.out.println(LocalDate.now().format(OPTIONAL_START_SAMPLE_FORMAT));
         System.out.println(LocalDateTime.now().format(OPTIONAL_START_SAMPLE_FORMAT));
-
-//        System.out.println(DateTimeFormatter.ISO_INSTANT.format(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-//        System.out.println(DateTimeFormatter.ISO_INSTANT.parse("2006-01-02T15:04:05Z07:00"));
     }
 }
