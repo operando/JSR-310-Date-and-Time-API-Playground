@@ -81,5 +81,8 @@ public class Main {
         System.out.println(ZonedDateTime.now().toInstant());
         System.out.println(Instant.from(ZonedDateTime.now()));
         System.out.println(Instant.now());
+
+        System.out.println(LocalDateTime.parse("2016-11-18T00:43:46.771Z", SAMPLE_DATE_TIME));
+        System.out.println(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy年MM月dd日")));
     }
 }
