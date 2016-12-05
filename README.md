@@ -10,7 +10,6 @@ https://jcp.org/en/jsr/detail?id=310
 
 https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterBuilder.html
 
-
 #### appendOffset
 
 https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterBuilder.html#appendOffset-java.lang.String-java.lang.String-
@@ -18,7 +17,14 @@ https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterB
 
 #### appendPattern
 
+DateTimeFormatter.ofPatternで渡すFormatの仕様が詳しくわかる
+
 https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatterBuilder.html#appendPattern-java.lang.String-
+
+
+### DateTimeFormatter
+
+https://docs.oracle.com/javase/jp/8/docs/api/java/time/format/DateTimeFormatter.html
 
 
 ### Instant

@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.SignStyle;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import static java.time.temporal.ChronoField.HOUR_OF_DAY;
 import static java.time.temporal.ChronoField.YEAR;
@@ -39,6 +40,14 @@ public class Main {
         System.out.println(instantNow.toEpochMilli());
         System.out.println(Instant.now().toEpochMilli());
         System.out.println(Calendar.getInstance().getTimeInMillis());
+        System.out.println(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        System.out.println(System.currentTimeMillis() / 1000);
+        System.out.println(Instant.ofEpochSecond(1480313997).atZone(ZoneId.systemDefault()).toLocalDateTime());
+        System.out.println(Instant.ofEpochSecond(1480313997).atZone(ZoneId.systemDefault()).toLocalDateTime().atZone(ZoneId.systemDefault()).toEpochSecond());
+        System.out.println(Instant.ofEpochSecond(1480313997));
+        // 1480313997
+        // 1480313997
+        // 1480314021
 
         Calendar c = Calendar.getInstance();
         c.set(1896, 0, 1, 0, 0, 0);
@@ -84,5 +93,7 @@ public class Main {
 
         System.out.println(LocalDateTime.parse("2016-11-18T00:43:46.771Z", SAMPLE_DATE_TIME));
         System.out.println(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy年MM月dd日")));
+
+        FormatSample.run();
     }
 }
